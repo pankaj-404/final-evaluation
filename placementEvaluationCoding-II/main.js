@@ -54,8 +54,7 @@ function getData() {
       `https://api.pexels.com/v1/search?query=${val}&page=${page}&per_page=10`,
       {
         headers: {
-          Authorization:
-            "563492ad6f91700001000001d685aa2c690243a9882e96f420375055",
+          Authorization: apiKey.API_KEY,
         },
       }
     )
