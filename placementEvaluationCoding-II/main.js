@@ -42,7 +42,10 @@ function debounce(func, delay) {
 }
 
 let searchInput = document.querySelector("#searchInput");
-searchInput.addEventListener("keyup", debounce(getData, 2000));
+searchInput.addEventListener("keyup", () => {
+  page = 1;
+  debounce(getData, 2000)();
+});
 
 function getData() {
   let val = searchInput.value || "nature";
@@ -59,6 +62,7 @@ function getData() {
       .then((res) => res.json())
       .then((res) => {
         totalPage = Math.ceil(res.total_results / 10);
+
         card(res.photos);
       })
       .catch((err) => alert(err));
